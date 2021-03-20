@@ -34,7 +34,7 @@ const MyForm = () => {
   });
 
   const submit = (data: FormData) => {
-    console.log(data);
+    // console.log(data);
   };
 
   return (
