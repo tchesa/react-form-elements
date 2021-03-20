@@ -10,9 +10,71 @@ A simple project describing a pattern to use forms in React.
 
 ## Proposal
 
-WIP
+- [x] Simplify the usage of resolvers
+- [ ] Improve Form's schema & onSubmit types
 
-## Run
+### Simplify the usage of resolvers
+
+Turn this
+
+```typescript
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  name: yup.string().min(2).required(),
+  email: yup.string().email().required(),
+  gender: yup.string(),
+});
+
+const MyForm = () => {
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const submit = (data: FormData) => {
+    console.log(data);
+  };
+
+  return (
+    <Form onSubmit={handleSubmit(submit)}>
+      <Field.Input label="Name" name="name" ref={register} />
+      {errors.name?.message}
+      <Field.Input label="E-mail" name="email" ref={register} />
+      {errors.email?.message}
+      <Button>Submit</Button>
+    </Form>
+  );
+};
+```
+
+into this
+
+```typescript
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  name: yup.string().min(2).required(),
+  email: yup.string().email().required(),
+});
+
+const MyForm = () => {
+  const handleSubmit = (data: FormData) => {
+    // console.log(data)
+  };
+
+  return (
+    <Form schema={schema} onSubmit={handleSubmit}>
+      <Field.Input label="Name" name="name" />
+      <Field.Input label="E-mail" name="email" />
+      <Button>Submit</Button>
+    </Form>
+  );
+};
+```
+
+## How to run
 
 - `yarn`
 - `yarn start`
