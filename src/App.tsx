@@ -1,8 +1,8 @@
+import NewsletterForm from './components/newsletter-form'
+
 function App() {
   return (
-    <div className="App">
-      App
-    </div>
+    <NewsletterForm />
   );
 }
 
