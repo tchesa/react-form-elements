@@ -5,14 +5,10 @@ import * as yup from 'yup'
 import Form, { Field } from '../form'
 import Button from '../button'
 
-type User = {
-  name: string,
-  email: string
-}
-
-const schema: yup.SchemaOf<User> = yup.object().shape({
+const schema = yup.object().shape({
   name: yup.string().min(2).required(),
-  email: yup.string().email().required()
+  email: yup.string().email().required(),
+  gender: yup.string()
 })
 
 const NewsletterForm = () => {
@@ -20,16 +16,18 @@ const NewsletterForm = () => {
     resolver: yupResolver(schema),
   })
 
-  const newUser = (user: User) => {
-    console.log(user)
+  const newUser = (user: yup.TypeOf<typeof schema>) => {
+    console.log(user.name, user.email, user.gender)
   }
 
   return (
-    <Form onSubmit={handleSubmit<User>(newUser)}>
-      <Field.Input label="Name" name="name" ref={register} />
-      {errors.name?.message}
-      <Field.Input label="E-mail" name="email" ref={register} />
-      {errors.email?.message}
+    <Form onSubmit={handleSubmit(newUser)}>
+      <Field.Input label="Name*" name="name" ref={register} />
+      {errors.name?.message}<br />
+      <Field.Input label="E-mail*" name="email" ref={register} />
+      {errors.email?.message}<br />
+      <Field.Input label="Gender (male/female)" name="gender" ref={register} />
+      {errors.gender?.message}<br />
       <Button>Submit</Button>
     </Form>
   )
