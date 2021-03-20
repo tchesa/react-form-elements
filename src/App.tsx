@@ -1,4 +1,4 @@
-import NewsletterForm from './components/newsletter-form'
+import NewsletterForm from './components/newsletter-form/newsletter-form'
 
 function App() {
   return (
