@@ -1,23 +1,25 @@
 import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
 
 import Form, { Field } from '../form'
 import Button from '../button'
 
-const schema = yup.object().shape({
-  name: yup.string().min(2).required(),
-  email: yup.string().email().required(),
-  gender: yup.string()
+const schema = z.object({
+  name: z.string().min(2),
+  email: z.string().email(),
+  gender: z.string().optional()
 })
+
+type FormData = z.infer<typeof schema>
 
 const NewsletterForm = () => {
   const { register, handleSubmit, errors } = useForm({
-    resolver: yupResolver(schema),
+    resolver: zodResolver(schema),
   })
 
-  const newUser = (user: yup.TypeOf<typeof schema>) => {
-    console.log(user.name, user.email, user.gender)
+  const newUser = (user: FormData) => {
+    console.log(user)
   }
 
   return (
