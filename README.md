@@ -10,7 +10,7 @@ A simple project describing a pattern to use forms in React.
 
 ## Proposal
 
-- [x] Simplify the usage of resolvers
+- [x] [Simplify the usage of resolvers](#simplify-the-usage-of-resolvers)
 - [ ] Improve Form's schema & onSubmit types
 
 ### Simplify the usage of resolvers
