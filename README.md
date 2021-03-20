@@ -17,7 +17,7 @@ A simple project describing a pattern to use forms in React.
 
 Turn this
 
-```typescript
+```tsx
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -51,7 +51,7 @@ const MyForm = () => {
 
 into this
 
-```typescript
+```tsx
 import * as yup from "yup";
 
 const schema = yup.object().shape({
