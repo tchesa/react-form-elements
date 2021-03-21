@@ -23,8 +23,9 @@ The component should also internally provide to the form everything it needs to 
 
 ### Simplify the usage of resolvers
 
-Turn this
+Transfer `useForm` hook declaration to the generic form component. Also, send React Hook Form's `register` to each form field through Context API.
 
+We could turn this:
 ```tsx
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -57,8 +58,7 @@ const MyForm = () => {
 };
 ```
 
-into this
-
+to this:
 ```tsx
 import * as yup from "yup";
 
