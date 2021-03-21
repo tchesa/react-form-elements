@@ -9,10 +9,17 @@ A simple project describing a pattern to use forms in React.
 - [React Hook Form](https://github.com/react-hook-form/react-hook-form)
 - [Yup](https://github.com/jquense/yup)
 
-## Proposal
+## Work
 
+- [x] [Create components for each form fields](#create-components-for-each-form-fields)
 - [x] [Simplify the usage of resolvers](#simplify-the-usage-of-resolvers)
 - [ ] Improve Form's schema & onSubmit types
+
+### Create components for each form fields
+
+The component should have the input element and all information about the field the user should have. The input element can be an _input_, _textarea_, _select_, a custom field, etc. Examples of informations to the user are the label and the error message of this field.
+
+The component should also internally provide to the form everything it needs to handle & validate the data.
 
 ### Simplify the usage of resolvers
 
@@ -72,6 +79,25 @@ const MyForm = () => {
       <Button>Submit</Button>
     </Form>
   );
+};
+```
+
+### Improve Form's schema & onSubmit types
+
+Currently the form's `onSubmit` prop is typed as `(data: TypeOf<AnyObjectSchema>) => void`. Ideally the type of `data` should come from the type of the schema; e.g.:
+
+```tsx
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  name: yup.string().min(2).required(),
+  email: yup.string().email().required(),
+});
+
+export type Data = yup.TypeOf<typeof schema>;
+
+const handleSubmit = (data: Data) => {
+  // console.log(data)
 };
 ```
 
