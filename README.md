@@ -84,7 +84,9 @@ const MyForm = () => {
 
 ### Improve Form's schema & onSubmit types
 
-Currently the form's `onSubmit` prop is typed as `(data: TypeOf<AnyObjectSchema>) => void`. Ideally the type of `data` should come from the type of the schema; e.g.:
+Currently the forms's `schema` prop is typed as `AnyObjectSchema`, which is a generic schema type.
+
+Also, the `onSubmit` prop is typed as `(data: TypeOf<AnyObjectSchema>) => void`. Ideally the type of `data` should come from the type of the schema; e.g.:
 
 ```tsx
 import * as yup from "yup";
