@@ -5,6 +5,7 @@ A simple project describing a pattern to use forms in React.
 ## Dependencies
 
 - [React](https://github.com/facebook/react)
+- [Typescript](typescriptlang.org)
 - [React Hook Form](https://github.com/react-hook-form/react-hook-form)
 - [Yup](https://github.com/jquense/yup)
 
