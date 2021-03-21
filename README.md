@@ -15,7 +15,7 @@ A simple project describing a pattern to use forms in React.
 - [x] [Simplify the usage of resolvers](#simplify-the-usage-of-resolvers)
 - [ ] [Improve Form's schema & onSubmit types](#improve-forms-schema--onsubmit-types)
 
-### Create components for each form fields
+### Create components for each form field
 
 The component should have the input element and all information about the field the user should have. The input element can be an _input_, _textarea_, _select_, a custom field, etc. Examples of informations to the user are the label and the error message of this field.
 
