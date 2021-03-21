@@ -13,7 +13,7 @@ A simple project describing a pattern to use forms in React.
 
 - [x] [Create components for each form fields](#create-components-for-each-form-fields)
 - [x] [Simplify the usage of resolvers](#simplify-the-usage-of-resolvers)
-- [ ] Improve Form's schema & onSubmit types
+- [ ] [Improve Form's schema & onSubmit types](#improve-forms-schema--onsubmit-types)
 
 ### Create components for each form fields
 
