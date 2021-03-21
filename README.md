@@ -33,8 +33,7 @@ import * as yup from "yup";
 
 const schema = yup.object().shape({
   name: yup.string().min(2).required(),
-  email: yup.string().email().required(),
-  gender: yup.string(),
+  email: yup.string().email().required()
 });
 
 const MyForm = () => {
