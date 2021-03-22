@@ -15,7 +15,7 @@ A simple project describing a pattern to use forms in React.
 - [x] [Simplify the usage of resolvers](#simplify-the-usage-of-resolvers)
 - [ ] [Improve Form's schema & onSubmit types](#improve-forms-schema--onsubmit-types)
 
-### Create components for each form fields
+### Create components for each form field
 
 The component should have the input element and all information about the field the user should have. The input element can be an _input_, _textarea_, _select_, a custom field, etc. Examples of informations to the user are the label and the error message of this field.
 
@@ -30,8 +30,9 @@ Created components:
 
 ### Simplify the usage of resolvers
 
-Turn this
+Transfer `useForm` hook declaration to the generic form component. Also, send React Hook Form's `register` to each form field through Context API.
 
+We could turn this:
 ```tsx
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -39,8 +40,7 @@ import * as yup from "yup";
 
 const schema = yup.object().shape({
   name: yup.string().min(2).required(),
-  email: yup.string().email().required(),
-  gender: yup.string(),
+  email: yup.string().email().required()
 });
 
 const MyForm = () => {
@@ -64,8 +64,7 @@ const MyForm = () => {
 };
 ```
 
-into this
-
+to this:
 ```tsx
 import * as yup from "yup";
 
@@ -91,7 +90,9 @@ const MyForm = () => {
 
 ### Improve Form's schema & onSubmit types
 
-Currently the form's `onSubmit` prop is typed as `(data: TypeOf<AnyObjectSchema>) => void`. Ideally the type of `data` should come from the type of the schema; e.g.:
+Currently the forms's `schema` prop is typed as `AnyObjectSchema`, which is a generic schema type.
+
+Also, the `onSubmit` prop is typed as `(data: TypeOf<AnyObjectSchema>) => void`. Ideally the type of `data` should come from the type of the schema; e.g.:
 
 ```tsx
 import * as yup from "yup";
