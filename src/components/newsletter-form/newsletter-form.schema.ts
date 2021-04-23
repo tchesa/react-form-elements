@@ -1,11 +1,11 @@
 import * as yup from 'yup'
 
-export type Data = yup.TypeOf<typeof schema>
-
-const schema = yup.object().shape({
-  name: yup.string().min(2).required(),
-  email: yup.string().email().required(),
+const schema = yup.object({
+  name: yup.string().default('').min(2).required(),
+  email: yup.string().default('').email().required(),
   gender: yup.string()
 })
+
+export type Data = yup.TypeOf<typeof schema>
 
 export default schema
